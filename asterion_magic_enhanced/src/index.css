@@ -1,0 +1,305 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Outfit", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  --color-obsidian: #08090B;
+  --color-graphite: #131519;
+  --color-champagne: #C7AD7A;
+  --color-ivory: #F4F0E8;
+  --color-stone: #9A9A96;
+}
+
+@layer base {
+  html {
+    background-color: #08090B;
+    color: #F4F0E8;
+    font-family: var(--font-sans);
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  body {
+    background-color: #08090B;
+    color: #F4F0E8;
+    overflow-x: hidden;
+    letter-spacing: 0.01em;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    text-wrap: balance;
+  }
+}
+
+@keyframes scrollPulse {
+  0%, 100% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  40%, 60% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+}
+
+.animate-scroll-line {
+  animation: scrollPulse 2.6s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+}
+
+@keyframes pageEnter {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 6px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.animate-page-enter {
+  animation: pageEnter 0.36s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Engineering Hero: Continuous Commercial Camera Push-In + Subtle Angled Drift */
+@keyframes engineeringCameraPush {
+  0% {
+    transform: scale3d(1.035, 1.035, 1) translate3d(-1.8%, 0.6%, 0);
+  }
+  50% {
+    transform: scale3d(1.165, 1.165, 1) translate3d(2.2%, -0.9%, 0);
+  }
+  100% {
+    transform: scale3d(1.035, 1.035, 1) translate3d(-1.8%, 0.6%, 0);
+  }
+}
+
+.animate-engineering-camera {
+  animation: engineeringCameraPush 8.8s cubic-bezier(0.42, 0, 0.28, 1) infinite;
+  will-change: transform;
+}
+
+/* Subtle Wind-Tunnel Laminar Streamline Drift */
+@keyframes engineeringAirflowDrift {
+  0% {
+    transform: translate3d(-6%, 0, 0);
+    opacity: 0.16;
+  }
+  50% {
+    transform: translate3d(6%, -0.6%, 0);
+    opacity: 0.3;
+  }
+  100% {
+    transform: translate3d(-6%, 0, 0);
+    opacity: 0.16;
+  }
+}
+
+.animate-engineering-airflow {
+  animation: engineeringAirflowDrift 8.5s cubic-bezier(0.37, 0, 0.63, 1) infinite;
+  will-change: transform, opacity;
+}
+
+/* Restrained Bodywork Specular Light Sweep */
+@keyframes engineeringSpecularSweep {
+  0% {
+    transform: translate3d(-24%, 0, 0) skewX(-18deg);
+    opacity: 0;
+  }
+  28% {
+    opacity: 0.22;
+  }
+  62% {
+    opacity: 0.18;
+  }
+  100% {
+    transform: translate3d(28%, 0, 0) skewX(-18deg);
+    opacity: 0;
+  }
+}
+
+.animate-engineering-specular {
+  animation: engineeringSpecularSweep 9.5s cubic-bezier(0.25, 0.1, 0.25, 1) infinite;
+  will-change: transform, opacity;
+}
+
+
+
+/* -------------------------------------------------------------------------
+   ASTERION SIGNATURE MOTION — a restrained light-language shared by all pages
+   ------------------------------------------------------------------------- */
+.asterion-scroll-progress {
+  position: fixed;
+  inset: 0 0 auto 0;
+  height: 2px;
+  z-index: 80;
+  pointer-events: none;
+  background: rgba(244, 240, 232, 0.045);
+}
+
+.asterion-scroll-progress span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  transform-origin: left center;
+  background: linear-gradient(90deg, #8e1b27 0%, #c7ad7a 46%, #f4f0e8 100%);
+  box-shadow: 0 0 10px rgba(199, 173, 122, 0.28);
+  transition: transform 90ms linear;
+}
+
+.asterion-pointer-light {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 1;
+  width: min(38vw, 480px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0.42;
+  background: radial-gradient(circle, rgba(199, 173, 122, 0.075) 0%, rgba(199, 173, 122, 0.025) 34%, transparent 70%);
+  mix-blend-mode: screen;
+  will-change: transform;
+  transition: opacity 240ms ease;
+}
+
+.asterion-route-sweep {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  overflow: hidden;
+  pointer-events: none;
+  animation: asterionSweepRoot 920ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.asterion-route-sweep span {
+  position: absolute;
+  top: -18%;
+  bottom: -18%;
+  left: -44%;
+  width: 28%;
+  transform: skewX(-17deg);
+  opacity: 0;
+  background: linear-gradient(90deg, transparent 0%, rgba(199, 173, 122, 0.035) 25%, rgba(244, 240, 232, 0.10) 49%, rgba(199, 173, 122, 0.055) 58%, transparent 100%);
+  filter: blur(5px);
+  animation: asterionSweepBeam 920ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes asterionSweepRoot {
+  0%, 100% { opacity: 1; }
+}
+
+@keyframes asterionSweepBeam {
+  0% { left: -44%; opacity: 0; }
+  18% { opacity: 1; }
+  72% { opacity: 0.62; }
+  100% { left: 124%; opacity: 0; }
+}
+
+@media (hover: none), (pointer: coarse), (max-width: 767px) {
+  .asterion-pointer-light { display: none; }
+  .asterion-route-sweep span { width: 48%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .asterion-pointer-light,
+  .asterion-route-sweep { display: none !important; }
+  .asterion-scroll-progress span { transition: none; }
+}
+
+
+/* Subtle headlight-like glint on the primary actions */
+.asterion-shine-button {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.asterion-shine-button > * {
+  position: relative;
+  z-index: 2;
+}
+
+.asterion-shine-button::after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  top: -35%;
+  bottom: -35%;
+  left: -70%;
+  width: 34%;
+  pointer-events: none;
+  transform: skewX(-21deg);
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.48), transparent);
+  opacity: 0;
+}
+
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .asterion-shine-button:hover::after,
+  .asterion-shine-button:focus-visible::after {
+    opacity: 1;
+    animation: asterionButtonGlint 760ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+}
+
+@keyframes asterionButtonGlint {
+  from { left: -70%; opacity: 0; }
+  18% { opacity: 0.9; }
+  to { left: 145%; opacity: 0; }
+}
+
+
+/* Hero film: layered camera drift complements the footage without distorting the vehicle */
+@keyframes asterionHomeFilmDrift {
+  0% { transform: scale3d(1.015, 1.015, 1) translate3d(-0.35%, 0.15%, 0); }
+  100% { transform: scale3d(1.075, 1.075, 1) translate3d(0.45%, -0.2%, 0); }
+}
+
+.asterion-home-film-motion {
+  animation: asterionHomeFilmDrift 17s cubic-bezier(0.42, 0, 0.28, 1) infinite alternate;
+  transform-origin: 56% 48%;
+  will-change: transform;
+}
+
+@media (max-width: 767px) {
+  @keyframes asterionHomeFilmDriftMobile {
+    0% { transform: scale3d(1.015, 1.015, 1) translate3d(-0.15%, 0, 0); }
+    100% { transform: scale3d(1.045, 1.045, 1) translate3d(0.2%, 0, 0); }
+  }
+  .asterion-home-film-motion {
+    animation-name: asterionHomeFilmDriftMobile;
+    transform-origin: 64% 50%;
+  }
+  .animate-engineering-camera {
+    animation-name: engineeringCameraPushMobile;
+  }
+  @keyframes engineeringCameraPushMobile {
+    0% { transform: scale3d(1.025, 1.025, 1) translate3d(-0.8%, 0.2%, 0); }
+    50% { transform: scale3d(1.09, 1.09, 1) translate3d(0.8%, -0.35%, 0); }
+    100% { transform: scale3d(1.025, 1.025, 1) translate3d(-0.8%, 0.2%, 0); }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .asterion-home-film-motion { animation: none !important; transform: none !important; }
+  .animate-engineering-camera { animation: none !important; transform: none !important; }
+}

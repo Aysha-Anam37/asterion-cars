@@ -1,0 +1,6 @@
+{
+  "name": "ASTERION",
+  "description": "Cinematic luxury performance automotive showcase and interactive concept engineering experience.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
